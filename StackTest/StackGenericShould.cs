@@ -5,7 +5,7 @@ namespace StackTest
         [Fact]
         public void Test1()
         {
-
+            
         }
     }
 }
