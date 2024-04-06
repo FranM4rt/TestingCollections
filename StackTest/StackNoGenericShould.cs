@@ -1,6 +1,6 @@
 namespace StackTest
 {
-    public class StackNoGenericTest
+    public class StackNoGenericShould
     {
         [Fact]
         public void Test1()
