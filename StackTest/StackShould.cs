@@ -5,6 +5,17 @@ namespace StackTest
 {
     public class StackShould
     {
+
+        /*
+         * Metodos de creación de Stack<>
+         */
+
+
+
+        /*
+         * Métodos de manipulación de datos
+         */
+
         [Fact]
         public void StoreDifferentTypeDataUsingPush()
         {
