@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace StackTest
 {
-    public class StackNoGenericShould
+    public class StackShould
     {
         [Fact]
         public void StoreDifferentTypeDataUsingPush()
@@ -19,6 +19,24 @@ namespace StackTest
             // Assert
             data.Should().NotBeNull()
                 .And.BeOfType<Stack>();
+        }
+
+        /*
+         * Excepciones
+         */
+
+        [Fact]
+        public void ThrowInvalidOperationExceptionnWhenPeekEmptyStack()
+        {
+            // Arrange
+            Stack pila = new Stack();
+
+            // Act
+            Action act = () => pila.Peek();
+
+            // Assert
+            act.Should().Throw<InvalidOperationException>()
+                .WithMessage("Stack empty.");
         }
     }
 }
