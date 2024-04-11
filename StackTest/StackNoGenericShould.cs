@@ -63,6 +63,8 @@ namespace StackTest
         }
 
         [Fact]
+        
+        
         public void RemoveAndReturnBeginningDataUsingPop()
         {
             // Arrange
@@ -115,6 +117,19 @@ namespace StackTest
 
             // Assert
             act.Should().Throw<ArgumentOutOfRangeException>();
+        }
+
+        [Fact]
+        public void ThrowArgumentNullExceptionWhenCreateStackWithNull()
+        {
+            // Arrange
+            ICollection collection = null;
+
+            // Act
+            Action act = () => new Stack(collection);
+
+            // Assert
+            act.Should().Throw<ArgumentNullException>();
         }
 
         [Fact]
