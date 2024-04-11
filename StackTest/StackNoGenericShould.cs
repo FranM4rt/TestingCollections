@@ -38,8 +38,8 @@ namespace StackTest
 
             // Assert
             data.Should().NotBeNull()
-                .And.BeOfType<Stack>()
-                .As<Stack>().Count.Should().Be(collection.Count);
+                .And.BeOfType<Stack>();
+            data.Count.Should().Be(collection.Count);
         }
 
         /*
