@@ -61,13 +61,11 @@ namespace StackTest
         }
 
         [Fact]
-        
-        
         public void RemoveAndReturnBeginningDataUsingPop()
         {
             // Arrange
             Stack data = new Stack();
-            
+
             // Act
             data.Push("Texto");
             data.Push(432);
