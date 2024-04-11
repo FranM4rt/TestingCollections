@@ -14,11 +14,9 @@ namespace StackTest
         {
             // Arrange
             Stack data;
-            int count;
 
             // Act
             data = new Stack();
-            count = data.Count;
 
             // Assert
             data.Should().NotBeNull()
