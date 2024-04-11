@@ -80,6 +80,26 @@ namespace StackTest
             result.Should().Be(432);
         }
 
+        [Fact]
+        public void ReturnBeginningDataUsingPeekWithoutRemoveIt()
+        {
+            // Arrange
+            Stack data = new Stack();
+
+            // Act
+            data.Push(true);
+            data.Push(321);
+            var result = data.Peek();
+
+            // Assert
+            data.Count.Should().NotBe(0)
+                .And.Be(2);
+            data.Contains(true).Should().BeTrue();
+            data.Contains(321).Should().BeTrue();
+            result.Should().NotBeNull()
+                .And.Be(321);
+        }
+
         /*
          * Excepciones
          */
