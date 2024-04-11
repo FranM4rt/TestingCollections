@@ -105,6 +105,19 @@ namespace StackTest
          */
 
         [Fact]
+        public void ThrowArgumentOutOfRangeExceptionWhenCreateStackWithNegativeSize()
+        {
+            // Arrange
+            int size = -1;
+
+            // Act
+            Action act = () => new Stack(size);
+
+            // Assert
+            act.Should().Throw<ArgumentOutOfRangeException>();
+        }
+
+        [Fact]
         public void ThrowInvalidOperationExceptionnWhenPeekEmptyStack()
         {
             // Arrange
