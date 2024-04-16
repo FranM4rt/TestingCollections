@@ -6,7 +6,7 @@ namespace StackTest
     {
 
         /*
-         * Metodos de creación de Stack<>
+         * Metodos constructores de creación de Stack<>
          */
 
         [Fact]
@@ -22,6 +22,25 @@ namespace StackTest
             strings.Should().NotBeNull()
                 .And.BeEmpty()
                 .And.BeOfType<Stack<string>>();
+        }
+
+        [Fact]
+        public void CreateEmptyStackOfSpecificSizeAndResizeItAutomatically()
+        {
+            // Arrange
+            Stack<string> strings = GenerateStack(200);
+
+            // Act
+            var initialCapacity = GetCapacity(strings);
+            strings.Push("S200");
+            var finalCapacity = GetCapacity(strings);
+
+            // Assert
+            strings.Should().NotBeNullOrEmpty()
+                .And.HaveCount(201)
+                .And.BeOfType<Stack<string>>();
+            finalCapacity.Should().BeGreaterThan(initialCapacity);
+            finalCapacity.Should().Be(initialCapacity * 2);
         }
 
         [Fact]
@@ -159,13 +178,23 @@ namespace StackTest
 
         private static Stack<string> GenerateStack(int l)
         {
-            Stack<string> strings = new Stack<string>();
+            Stack<string> strings = new Stack<string>(l);
             for (int i = 0; i < l; i++)
             {
                 strings.Push("S" + i);
             }
 
             return strings;
+        }
+
+        private int GetCapacity<T>(Stack<T> stack)
+        {
+            // Obtenemos el valor del campo _array de la pila que pasamos por parámetro
+            var field = typeof(Stack<T>).GetField("_array", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            // Covnertimos el objeto de tipo field a un array para saber su longitud
+            T[] array = (T[])field.GetValue(stack);
+            // retornamos la longitud del array que es el dato que nos interesa
+            return array.Length;
         }
     }
 }
