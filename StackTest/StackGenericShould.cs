@@ -195,6 +195,10 @@ namespace StackTest
                 .WithMessage("Stack empty.");
         }
 
+        /*
+         * Metodos privados que nos ayudan a generar datos de prueba y obtenerlos
+         */
+
         private static Stack<string> GenerateStack(int l)
         {
             Stack<string> strings = new Stack<string>(l);
