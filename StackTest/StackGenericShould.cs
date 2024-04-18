@@ -77,6 +77,25 @@ namespace StackTest
         }
 
         [Fact]
+        public void TrimExcessStackCapacity()
+        {
+            // Arrange
+            Stack<string> strings = GenerateStack(100);
+
+            // Act
+            var capacityBeforePush = GetCapacity(strings);
+            strings.Push("S100");
+            var capacityAfterPush = GetCapacity(strings);
+            strings.TrimExcess();
+            var capacityAfterTrim = GetCapacity(strings);
+
+            // Assert
+            capacityBeforePush.Should().Be(100);
+            capacityAfterPush.Should().Be(200);
+            capacityAfterTrim.Should().Be(101);
+        }
+
+        [Fact]
         public void StoreSameTypeDataInReverseOrderUsingPush()
         {
             // Arrange
