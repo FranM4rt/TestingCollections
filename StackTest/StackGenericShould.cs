@@ -62,6 +62,20 @@ namespace StackTest
         /*
          * Métodos de manipulación de datos
          */
+        // usando clear
+        [Fact]
+        public void ClearStackData()
+        {
+            // Arrange
+            Stack<string> strings = GenerateStack(100);
+
+            // Act
+            strings.Clear();
+
+            // Assert
+            strings.Should().NotBeNull()
+                .And.BeEmpty();
+        }
 
         [Fact]
         public void CountNumberOfElementUsingCount()
@@ -150,6 +164,31 @@ namespace StackTest
                 .And.HaveCount(2)
                 .And.ContainInOrder("B", "A");
         }
+
+        /*
+         * Metodos heredados de la clase Object
+        */
+
+        /// <summary>
+        /// Stack<> no sobreescribe el método toString de la clase Object
+        /// por eso no se imprimen los valores sino el tipo de objeto
+        /// </summary>
+        [Fact]
+        public void ReturnStringRepresentationOfStackUsingToString()
+        {
+            // Arrange
+            Stack<string> strings = GenerateStack(3);
+
+            // Act
+            string? result = strings.ToString();
+
+            // Assert
+            result.Should().NotBeEmpty()
+                .And.NotBe("S0,S1,S2")
+                .And.Be("System.Collections.Generic.Stack`1[System.String]");
+        }
+
+        
 
         /*
          * Excepciones
